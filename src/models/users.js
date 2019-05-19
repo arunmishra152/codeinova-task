@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        trim: true
+        required: true
     },
     email: {
         type: String,
@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
         tolowercase: true,
     },
     password: {
-        type: String
+        type: String,
+        required: true
     }
 })
 
