@@ -20,10 +20,13 @@ router.post('/orders', async (req, res) => {
             let pro = order.products.find(p => p.product_name == product.name)
             orderTotal += VAT + (product.price * pro.quantity) - discount;
         })
-    res.status(200).send({totol:orderTotal})
+        order.Order_Total = orderTotal
+        await order.save()
+    res.status(201).send(order)
     } catch (error) {
         re.status(400).send('Something went wrong')
     }
+   
 })
 
 module.exports = router
